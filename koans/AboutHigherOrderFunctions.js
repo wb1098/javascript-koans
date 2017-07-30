@@ -10,34 +10,34 @@ describe("About Higher Order Functions", function () {
   it("should use filter to return array items that meet a criteria", function () {
     var numbers = [1,2,3];
     var odd = _(numbers).filter(function (x) { return x % 2 !== 0 });
-    
+
     expect(odd).toEqual([1,3]);
     expect(odd.length).toBe(2);
     expect(numbers.length).toBe(3);
   });
-    
+
   it("should use 'map' to transform each element", function () {
     var numbers = [1, 2, 3];
     var numbersPlus1 = _(numbers).map(function(x) { return x + 1 });
-    
+
     expect(numbersPlus1).toEqual([2,3,4]);
     expect(numbers).toEqual([1,2,3]);
   });
-    
+
   it("should use 'reduce' to update the same result on each iteration", function () {
     var numbers = [1, 2, 3];
     var reduction = _(numbers).reduce(
       function(memo, x) {
         //note: memo is the result from last call, and x is the current number
         return memo + x;
-      }, 
+      },
       /* initial */ 0
     );
-    
+
     expect(reduction).toBe(6);
     expect(numbers).toEqual([1,2,3]);
   });
-    
+
   it("should use 'forEach' for simple iteration", function () {
     var numbers = [1,2,3];
     var msg = "";
@@ -46,11 +46,11 @@ describe("About Higher Order Functions", function () {
     };
 
     _(numbers).forEach(isEven);
-    
+
     expect(msg).toEqual("falsetruefalse");
     expect(numbers).toEqual([1,2,3]);
   });
-    
+
   it("should use 'all' to test whether all items pass condition", function () {
     var onlyEven = [2,4,6];
     var mixedBag = [2,4,5,6];
@@ -60,7 +60,7 @@ describe("About Higher Order Functions", function () {
     expect(_(onlyEven).all(isEven)).toBe(true);
     expect(_(mixedBag).all(isEven)).toBe(false);
   });
-    
+
   it("should use 'any' to test if any items passes condition" , function () {
     var onlyEven = [2,4,6];
     var mixedBag = [2,4,5,6];
